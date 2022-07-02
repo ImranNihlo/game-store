@@ -1,13 +1,24 @@
 import React from 'react'
-import "./gameItem.css"
 import GameCover from '../gameCover'
 import GameBuy from '../gameBuy'
 import GameGenre from '../gameGenre'
+import "./gameItem.css"
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setCurrentGame } from '../../redux/games/reducer'
 
 function GameItem (props) {
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(setCurrentGame(props.game));
+  }
+
   return (
-    <div className="game-item">
-      <GameCover image={props.game.image} />
+    <div className="game-item" onClick={ handleClick }>
+      <Link to={`/${props.game.title}`}>
+        <GameCover image={props.game.image} />
+      </Link>
       <div className="game-item__details">
         <span className="game-item__title">
           {props.game.title}

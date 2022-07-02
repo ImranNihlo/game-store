@@ -11,14 +11,19 @@ function CartBlock (props) {
   const items = useSelector(state => state.cart.itemsInCart);
   const totalPrice = calcTotalPrice(items);
 
+
+  const handleClick = () => {
+    setIsCartMenuVisible(false);
+  }
+
   return (
     <div className="cart-block">
       <ItemsInCart quantity={items.length} />
       <BiCart size={25}  className="cart-block__icon" onClick={() => setIsCartMenuVisible(!isCartMenuVisible)}/>
-      {totalPrice > 0 ? (
+      {1 > 0 ? (
           <span className="cart-block__total-price">{totalPrice} руб.</span>
       ) : null}
-      {isCartMenuVisible && <CartMenu items={items} onClick={() => null}/>}
+      {isCartMenuVisible && <CartMenu items={items} handleClick={handleClick}/>}
     </div>
   )
 }

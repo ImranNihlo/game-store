@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./home.css";
 import GameItem from '../../components/gameItem'
+import { useDispatch, useSelector } from 'react-redux'
+import { setFilter } from '../../redux/games/reducer'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 
 const GAMES = [
   {
@@ -60,10 +63,43 @@ const GAMES = [
 ]
 
 function Home (props) {
+  const dispatch = useDispatch();
+  const filter = useSelector(state => state.game.filter);
+
+  const filtered = GAMES.filter(
+    (item) => item.genres.indexOf(filter) > -1,
+  );
+
+  const handleDelete = () => {
+    dispatch(setFilter(''))
+  }
+
   return (
-    <div className="home">
-      {GAMES.map(game => <GameItem game={game} key={game.id}/>)}
-    </div>
+   <>
+     <div className="home-filter">
+       <input
+         type="text"
+         placeholder="поиск игры по жанру"
+         className="home-input"
+         value={filter}
+         onChange={(e) => dispatch(setFilter(e.target.value[0].toUpperCase() + e.target.value.slice(1)))}
+       />
+       <AiOutlineCloseCircle
+         size={25}
+         className="home__close-icon"
+         onClick={handleDelete}
+       />
+     </div>
+     {filter.length === 0 ? (
+       <div className="home">
+         {GAMES.map(game => <GameItem game={game} key={game.id}/>)}
+       </div>
+     ) : (
+       <div className="home">
+         {filtered.map(game => <GameItem game={game} key={game.id}/>)}
+       </div>
+     )}
+   </>
   )
 }
 

@@ -3,6 +3,7 @@ import './cartMenu.css'
 import { calcTotalPrice } from '../utils'
 import Button from '../button'
 import CartItem from '../cartItem'
+import { Link } from 'react-router-dom'
 
 function cartMenu (props) {
   return (
@@ -14,6 +15,7 @@ function cartMenu (props) {
             price={game.price}
             title={game.title}
             id={game.id}
+            handleClick={props.handleClick}
           />
           )) :
           "Корзина пуста"}
@@ -25,10 +27,12 @@ function cartMenu (props) {
             <span>
               {calcTotalPrice(props.items)} руб.
             </span>
-            <Button type="primary" size="m" onClick={onclick}>
-              Оформить заказ
-            </Button>
           </div>
+          <Button type="primary" size="m" onClick={props.handleClick}>
+            <Link to="/order">
+              Оформить заказ
+            </Link>
+          </Button>
         </div>
       ) : null}
     </div>

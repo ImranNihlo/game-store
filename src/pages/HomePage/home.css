@@ -2,3 +2,42 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.home-filter {
+    display: flex;
+    justify-content: space-between;
+    background-color: gray!important;
+    box-sizing: border-box;
+    width: 90%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 0 15px;
+    margin-bottom: 15px;
+}
+
+.home-input {
+    border: none;
+    width: 80%;
+    background-color: gray;
+    color: white;
+}
+
+.home__close-icon {
+    color: black;
+}
+
+::-webkit-input-placeholder {
+    color: black;
+}
+
+:-moz-placeholder {
+    color: black;
+}
+
+::-moz-placeholder {
+    color: black;
+}
+
+:-ms-input-placeholder {
+    color: black;
+}

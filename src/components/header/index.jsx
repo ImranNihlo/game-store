@@ -7,12 +7,12 @@ function Header (props) {
   return (
     <div className="header">
       <div className="wrapper">
-        <Link to="/" classneme="header__store-title">
+        <Link to="/" className="header__store-title">
           Game story
         </Link>
-      </div>
-      <div className="wrapper header__cart-btn">
-        <CartBlock />
+        <div className="wrapper header__cart-btn">
+          <CartBlock />
+        </div>
       </div>
     </div>
   )
