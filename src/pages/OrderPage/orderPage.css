@@ -1,0 +1,8 @@
+.order-empty {
+    height: 400px;
+}
+
+.order-number {
+    color: gray;
+    font-weight: bold;
+}

@@ -4,6 +4,7 @@ import GameItem from '../../components/gameItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFilter } from '../../redux/games/reducer'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
+import app from '../../App'
 
 const GAMES = [
   {
